@@ -1,7 +1,8 @@
 const MakeController = require('./MakeController')
 const MakeRequest = require('./MakeRequest')
 const MakeModel = require('./MakeModel')
-const availableCommands = ['make:controller', 'make:request', 'make:model']
+const FakeData = require('./FakeData')
+const availableCommands = ['make:controller', 'make:request', 'make:model', 'make:faker']
 var argv = process.argv
 
 module.exports = class ExecuteConsole {
@@ -19,6 +20,7 @@ module.exports = class ExecuteConsole {
             console.log('\x1b[41m', "Invalid Command. \r\n Related command 'make:controller', 'make:request', 'make:model'",'\x1b[0m');
             process.exit()
         } else {
+            // console.log(argv);
             this.executeCMD(argv[2], argv[3])
         }
     }
@@ -33,6 +35,9 @@ module.exports = class ExecuteConsole {
                 break;
             case 'make:model':
                 var result = new MakeModel(name)
+                break;
+            case 'make:faker':
+                var result = new FakeData()
                 break;
             default:
                 console.log('\x1b[41m', "Invalid Command. \r\n Related command 'make:controller', 'make:request', 'make:model'",'\x1b[0m');

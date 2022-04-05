@@ -6,12 +6,10 @@ class FakeData {
         this.Fake()
     }
    Fake(){
-       console.log('ll');
        var newPermission = new Permission({
            name:'Users',
            description: 'This is admin role'
        });
-       console.log(newPermission);
        Permission.addPermission(newPermission,(err, data) => {
            console.log('in save');
            if (err) {
